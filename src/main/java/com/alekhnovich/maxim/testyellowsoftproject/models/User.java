@@ -6,14 +6,15 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user",schema = "testyellowsoftproject")
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class User{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
-    private Long id;
+    private Integer id;
 
     @Setter
     @Getter
@@ -22,7 +23,7 @@ public class User{
 
     @Setter
     @Getter
-    @Column(name = "passHash")
+    @Column(name = "passhash")
     @NonNull
     private String password;
 

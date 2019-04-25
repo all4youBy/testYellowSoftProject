@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl extends CrudServiceImpl<User,Long> implements UserService {
+public class UserServiceImpl extends CrudServiceImpl<User,Integer> implements UserService {
 
     private final UserRepository userRepository;
 
@@ -18,7 +18,7 @@ public class UserServiceImpl extends CrudServiceImpl<User,Long> implements UserS
     }
 
     @Override
-    public JpaRepository<User, Long> getRepository() {
+    public JpaRepository<User, Integer> getRepository() {
         return userRepository;
     }
 

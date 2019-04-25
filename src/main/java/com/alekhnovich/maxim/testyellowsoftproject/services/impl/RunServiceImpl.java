@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RunServiceImpl extends CrudServiceImpl<Run,Long> implements RunService {
+public class RunServiceImpl extends CrudServiceImpl<Run,Integer> implements RunService {
 
     private final RunRepository runRepository;
 
@@ -18,7 +18,7 @@ public class RunServiceImpl extends CrudServiceImpl<Run,Long> implements RunServ
     }
 
     @Override
-    public JpaRepository<Run, Long> getRepository() {
+    public JpaRepository<Run, Integer> getRepository() {
         return runRepository;
     }
 }

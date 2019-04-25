@@ -8,14 +8,15 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "run")
+@Table(name = "run",schema = "testyellowsoftproject")
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Run {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
-    private Long id;
+    private Integer id;
 
     @Setter
     @Getter
