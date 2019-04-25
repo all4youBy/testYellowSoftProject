@@ -11,7 +11,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,19 +19,16 @@ public class SecurityServiceImpl implements SecurityService {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final SecurityUtils securityUtils;
-    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public SecurityServiceImpl(AuthenticationManager authenticationManager,
                                    @Qualifier("userDetailsServiceImpl")
                                            UserDetailsService userDetailsService,
-                                   SecurityUtils securityUtils,
-                                   PasswordEncoder passwordEncoder)
+                                   SecurityUtils securityUtils)
     {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.securityUtils = securityUtils;
-        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -40,7 +36,6 @@ public class SecurityServiceImpl implements SecurityService {
     public String authenticate(String login, String password) {
         try {
             UserDetails user = userDetailsService.loadUserByUsername(login);
-            System.out.println(user.getUsername());
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(login,password,user.getAuthorities());
             authenticationManager.authenticate(token);
             if(token.isAuthenticated())

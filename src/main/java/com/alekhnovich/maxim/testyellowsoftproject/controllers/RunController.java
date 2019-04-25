@@ -23,4 +23,6 @@ public class RunController {
     public ResponseEntity<Object> getUserRuns(Principal principal){
         return ResponseEntity.ok(runService.getUserRuns(principal.getName()));
     }
+
+
 }

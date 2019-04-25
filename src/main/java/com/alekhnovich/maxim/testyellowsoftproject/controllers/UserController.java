@@ -26,9 +26,11 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity<Object> getUsers(){
         List<User> users = userService.getItems();
-        return users.isEmpty()?
-                ResponseEntity.status(HttpStatus.NO_CONTENT).body(new JSONMessage("Can't find any users.")):
-                ResponseEntity.ok(users);
+
+        if(users.isEmpty())
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new JSONMessage("Can't find any users."));
+
+         return ResponseEntity.ok(users);
     }
 
     @GetMapping("/{login}")

@@ -1,5 +1,6 @@
 package com.alekhnovich.maxim.testyellowsoftproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class User{
 
     @Setter
     @Getter
+    @JsonIgnore
     @Column(name = "passhash")
     @NonNull
     private String password;
@@ -30,5 +32,6 @@ public class User{
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     @Setter
     @Getter
+    @JsonIgnore
     private Set<Run> userRuns;
 }
