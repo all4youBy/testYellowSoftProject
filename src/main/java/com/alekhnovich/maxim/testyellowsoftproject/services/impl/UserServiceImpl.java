@@ -21,4 +21,9 @@ public class UserServiceImpl extends CrudServiceImpl<User,Long> implements UserS
     public JpaRepository<User, Long> getRepository() {
         return userRepository;
     }
+
+    @Override
+    public User getUserByLogin(String login) {
+        return userRepository.getUserByLogin(login);
+    }
 }

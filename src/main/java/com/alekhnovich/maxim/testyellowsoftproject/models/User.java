@@ -17,7 +17,6 @@ public class User{
 
     @Setter
     @Getter
-    @Column(name = "name")
     @NonNull
     private String login;
 
