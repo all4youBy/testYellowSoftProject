@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,5 +29,10 @@ public class UserController {
         return users.isEmpty()?
                 ResponseEntity.status(HttpStatus.NO_CONTENT).body(new JSONMessage("Can't find any users.")):
                 ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/{login}")
+    public ResponseEntity<Object> getUserByLogin(@PathVariable String login){
+        return ResponseEntity.ok(userService.getUserByLogin(login));
     }
 }
