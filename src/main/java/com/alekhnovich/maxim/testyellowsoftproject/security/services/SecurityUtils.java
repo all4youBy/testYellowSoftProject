@@ -32,7 +32,8 @@ public class SecurityUtils {
         final LocalDateTime expirationDate = calculateExpirationDate(createdDate);
         Map<String, Object> claims = new HashMap<>();
 
-        return Jwts.builder()
+        claims.put("role", user.getUserRole());
+        return BREARER_PREFIX+Jwts.builder()
                 .setClaims(claims)
                 .setSubject(user.getUsername())
                 .setIssuedAt(TimeService.parseLocalDateTimeToDate(createdDate))

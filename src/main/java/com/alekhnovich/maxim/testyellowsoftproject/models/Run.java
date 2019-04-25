@@ -5,7 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "run",schema = "testyellowsoftproject")
@@ -24,11 +24,13 @@ public class Run {
     private Double distance;
 
     @Column(name = "run_time")
+    @NonNull
     @Setter
     @Getter
-    private LocalDateTime runTime;
+    private LocalTime runTime;
 
     @Column(name = "run_date")
+    @NonNull
     @Setter
     @Getter
     private LocalDate runDate;

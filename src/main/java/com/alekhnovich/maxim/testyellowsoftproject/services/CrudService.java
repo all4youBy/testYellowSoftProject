@@ -9,6 +9,7 @@ public interface CrudService<E,K> {
     JpaRepository<E,K> getRepository();
     E addItem(E item);
     E getItem(K key) throws EntityBeanNotFoundException;
+    E updateItem(E item);
     void deleteItemByKey(K key);
     void deleteItem(E item);
     List<E> getItems();

@@ -18,6 +18,11 @@ public abstract class CrudServiceImpl<E,K> implements CrudService<E,K>{
     }
 
     @Override
+    public E updateItem(E item) {
+        return getRepository().save(item);
+    }
+
+    @Override
     public void deleteItemByKey(K key) {
         getRepository().deleteById(key);
     }
