@@ -63,11 +63,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         HttpMethod.POST,
                         "/signin",
                         "/signup/**"
-                )  .antMatchers(
+                )    .antMatchers(
                 HttpMethod.GET,
-                "/",
+                "/"
+                ,"/*.js",
                 "/*.html",
-                "**/*.html")
+                "**/*.html",
+                "**/*.css",
+                "**/*.js"
+        )
                 .and()
                 .ignoring()
                 .antMatchers("/v2/api-docs",
