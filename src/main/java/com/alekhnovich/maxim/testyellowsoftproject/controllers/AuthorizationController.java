@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @RestController
 public class AuthorizationController {
@@ -44,7 +42,7 @@ public class AuthorizationController {
         if(!request.getPassword().equals(request.getConfirmPassword())){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JSONMessage("Passwords doesn't match."));
         }
-        User user = new User(request.getLogin(),request.getPassword(), LocalDate.now());
+        User user = new User(request.getLogin(),request.getPassword());
         userService.addItem(user);
         return ResponseEntity.ok(user);
     }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -29,12 +28,6 @@ public class User{
     @Column(name = "passhash")
     @NonNull
     private String password;
-
-    @Column(name = "registration_date")
-    @Setter
-    @Getter
-    @NonNull
-    private LocalDate registrationDate;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     @Setter

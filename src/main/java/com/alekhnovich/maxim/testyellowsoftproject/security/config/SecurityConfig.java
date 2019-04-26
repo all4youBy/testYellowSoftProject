@@ -63,7 +63,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         HttpMethod.POST,
                         "/signin",
                         "/signup/**"
-                );
+                )  .antMatchers(
+                HttpMethod.GET,
+                "/"
+                ,"/*.js",
+                "/*.html",
+                "**/*.html")
+                .and()
+                .ignoring()
+                .antMatchers("/v2/api-docs",
+                        "/configuration/ui",
+                        "/swagger-resources",
+                        "/configuration/security",
+                        "/swagger-ui.html",
+                        "/webjars/**");
     }
 
     @Override
