@@ -2,7 +2,7 @@ package com.alekhnovich.maxim.testyellowsoftproject.controllers;
 
 import com.alekhnovich.maxim.testyellowsoftproject.models.User;
 import com.alekhnovich.maxim.testyellowsoftproject.models.dto.JSONMessage;
-import com.alekhnovich.maxim.testyellowsoftproject.models.dto.Token;
+import com.alekhnovich.maxim.testyellowsoftproject.models.dto.TokenDTO;
 import com.alekhnovich.maxim.testyellowsoftproject.models.dto.requests.AuthenticationRequest;
 import com.alekhnovich.maxim.testyellowsoftproject.models.dto.requests.RegistrationRequest;
 import com.alekhnovich.maxim.testyellowsoftproject.services.SecurityService;
@@ -13,6 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @RestController
 public class AuthorizationController {
@@ -33,7 +36,7 @@ public class AuthorizationController {
         if(token.isEmpty())
           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JSONMessage("Check login or password."));
 
-        return ResponseEntity.ok(new Token(securityService.authenticate(request.getLogin(),request.getPassword())));
+        return ResponseEntity.ok(new TokenDTO(securityService.authenticate(request.getLogin(),request.getPassword())));
     }
 
     @PostMapping("/signup")
@@ -41,7 +44,7 @@ public class AuthorizationController {
         if(!request.getPassword().equals(request.getConfirmPassword())){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JSONMessage("Passwords doesn't match."));
         }
-        User user = new User(request.getLogin(),request.getPassword());
+        User user = new User(request.getLogin(),request.getPassword(), LocalDate.now());
         userService.addItem(user);
         return ResponseEntity.ok(user);
     }

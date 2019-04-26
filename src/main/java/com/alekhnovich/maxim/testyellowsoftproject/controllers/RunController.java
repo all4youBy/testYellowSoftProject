@@ -48,13 +48,13 @@ public class RunController {
 
     @DeleteMapping
     @PreAuthorize("#run.user.login == authentication.name")
-    public void deleteRun(Run run){
+    public void deleteRun(@RequestBody Run run){
         runService.deleteItem(run);
     }
 
     @PutMapping
     @PreAuthorize("#run.user.login == authentication.name")
-    public ResponseEntity<Run> updateRun(Run run){
+    public ResponseEntity<Run> updateRun(@RequestBody Run run){
        return ResponseEntity.ok(runService.updateItem(run));
     }
 }

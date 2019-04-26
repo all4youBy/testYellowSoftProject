@@ -4,7 +4,6 @@ import com.alekhnovich.maxim.testyellowsoftproject.models.User;
 import com.alekhnovich.maxim.testyellowsoftproject.repositories.UserRepository;
 import com.alekhnovich.maxim.testyellowsoftproject.security.roles.UserPrincipal;
 import com.alekhnovich.maxim.testyellowsoftproject.security.roles.UserRole;
-import com.alekhnovich.maxim.testyellowsoftproject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
