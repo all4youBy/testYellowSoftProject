@@ -65,8 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/signup/**"
                 )  .antMatchers(
                 HttpMethod.GET,
-                "/"
-                ,"/*.js",
+                "/",
                 "/*.html",
                 "**/*.html")
                 .and()

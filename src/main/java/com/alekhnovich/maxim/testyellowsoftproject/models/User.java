@@ -29,6 +29,12 @@ public class User{
     @NonNull
     private String password;
 
+    @Column(name = "photo")
+    @JsonIgnore
+    @Setter
+    @Getter
+    private String photoPath;
+
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     @Setter
     @Getter
